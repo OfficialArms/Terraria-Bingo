@@ -1,16 +1,17 @@
 <script setup lang="ts">
-defineProps<{
-  msg: string
-}>()
+import BingoBoard from './BingoBoard.vue';
+import BingoHeader from './BingoHeader.vue';
 </script>
 
 <template>
     <div class="parent">
+        <BingoHeader id="bingo-header" className="header" msg="This is the Terraria Bingo Zone™!"/>
+        <BingoBoard id="bingo-board" className="parent"/>
         <div class="div1"> </div>
     </div>
 </template>
 
-<style scoped>
+<style>
 .parent {
     display: grid;
     grid-template-columns: 0.5fr repeat(3, 1fr) 0.5fr;
@@ -19,5 +20,6 @@ defineProps<{
     grid-row-gap: 0px;
 }
 
-.div1 { grid-area: 2 / 2 / 5 / 5; }
+#bingo-header { grid-area: 1 / 1 / 2 / 6; }
+#bingo-board { grid-area: 2 / 2 / 5 / 5; }
 </style>

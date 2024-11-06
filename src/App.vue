@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import BingoBoard from './components/BingoBoard.vue';
+import AppContainer from './components/AppContainer.vue';
 </script>
 
 <template>
   <header>
     <div class="wrapper">
-      <BingoBoard msg="This is the Terraria Bingo Zone™!" />
+      <AppContainer />
     </div>
   </header>
 
