@@ -15,7 +15,13 @@ defineProps<{
 .header-text {
     font-weight: 500;
     font-size: 2.6rem;
-    text-align: center;
+}
+
+/* Sets the container to flexbox and ensures it's centered vertically and horizontally */
+.bingo-header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
