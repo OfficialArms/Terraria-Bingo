@@ -1,38 +1,26 @@
 <script setup lang="ts">
 defineProps<{
-  msg: string,
-  id: string,
-  className: string
+  msg: string
 }>()
 </script>
 
 <template>
-    <div :id="`${id}`">
-        <h1 id="header-text" :class="{className}">{{ msg }}</h1>
+    <div class="bingo-header">
+        <h1 class="header-text">{{ msg }}</h1>
     </div>
 </template>
 
 <style scoped>
-div {
-  text-align: justify;
+
+.bingo-header { 
+    grid-area: 1 / 1 / 2 / 6;
 }
 
-div:after {
-  content: "";
-  display: inline-block;
-  width: 100%;
+.header-text {
+    font-weight: 500;
+    font-size: 2.6rem;
+    text-align: center;
 }
 
-h1 {
-  font-weight: 500;
-  font-size: 2.6rem;
-  position: relative;
-  top: -10px;
-  text-align: center;
-}
-
-#header-text {
-    
-}
 
 </style>
