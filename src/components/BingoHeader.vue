@@ -5,7 +5,7 @@ defineProps<{
 </script>
 
 <template>
-    <div class="bingo-header">
+    <div class="bingo-header-container">
         <h1 class="header-text">{{ msg }}</h1>
     </div>
 </template>

@@ -5,12 +5,12 @@ import BingoHeader from './components/BingoHeader.vue';
 
 <template>
   <div class="parent-grid">
-      <BingoHeader className="bingo-header-area" msg="This is the Terraria Bingo Zone™!"/>
-      <BingoBoard className="bingo-board-area" :size="3"/>
+      <BingoHeader class="bingo-header-area" msg="This is the Terraria Bingo Zone™!"/>
+      <BingoBoard class="bingo-board-area" :size="6"/>
   </div>
 </template>
 
-<style>
+<style scoped>
 .parent-grid {
     height: 100%;
     display: grid;
@@ -24,5 +24,7 @@ import BingoHeader from './components/BingoHeader.vue';
 
 .bingo-board-area { 
   grid-area: 2 / 2 / 5 / 5; 
+  display: grid;
+  border: 1px solid gray;
 }
 </style>
