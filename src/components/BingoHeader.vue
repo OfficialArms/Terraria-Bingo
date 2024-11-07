@@ -12,10 +12,6 @@ defineProps<{
 
 <style scoped>
 
-.bingo-header { 
-    grid-area: 1 / 1 / 2 / 6;
-}
-
 .header-text {
     font-weight: 500;
     font-size: 2.6rem;
