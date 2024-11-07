@@ -7,7 +7,6 @@ import BingoHeader from './BingoHeader.vue';
     <div class="parent">
         <BingoHeader id="bingo-header" className="header" msg="This is the Terraria Bingo Zone™!"/>
         <BingoBoard id="bingo-board" className="parent"/>
-        <div class="div1"> </div>
     </div>
 </template>
 

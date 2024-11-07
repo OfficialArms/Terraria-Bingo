@@ -9,7 +9,6 @@ defineProps<{
 <template>
     <div :id="`${id}`">
         <h1 id="header-text" :class="{className}">{{ msg }}</h1>
-        <div class="div1"> </div>
     </div>
 </template>
 
@@ -29,5 +28,11 @@ h1 {
   font-size: 2.6rem;
   position: relative;
   top: -10px;
+  text-align: center;
 }
+
+#header-text {
+    
+}
+
 </style>
