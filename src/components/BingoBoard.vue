@@ -1,4 +1,13 @@
 <script setup lang="ts">
+import { onMounted } from "vue";
+import json from "../tile-data.json";
+
+const test = json;
+
+onMounted(() => {
+  console.log("Imported json data it's: ",test);
+})
+
 defineProps<{
   size: number
 }>()
@@ -19,17 +28,6 @@ defineProps<{
     grid-template-rows: repeat(v-bind(size), 1fr);
     border: 1px solid red;
 }
-
-/* .bingo-header-area { 
-    grid-area: 1 / 1 / 2 / 6;
-}
-
-.bingo-board-area { 
-  grid-area: 2 / 2 / 5 / 5; 
-  border: 1px solid gray;
-} */
-
-
 
 .bingo-board-text {
   text-align: center;
