@@ -3,12 +3,7 @@ import AppContainer from './components/AppContainer.vue';
 </script>
 
 <template>
-  <header>
-    <div class="wrapper">
-      <AppContainer />
-    </div>
-  </header>
-
+  <AppContainer />
 </template>
 
 <style scoped>
