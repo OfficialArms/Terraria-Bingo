@@ -62,7 +62,7 @@
         },
         {
             "difficulty": 0,
-            "task": "Teleport between pylons"
+            "task": "Teleport between 2 pylons"
         },
         {
             "difficulty": 0,
@@ -102,11 +102,15 @@
         },
         {
             "difficulty": 0,
-            "task": "Reach hell"
+            "task": "Reach the underworld"
         },
         {
             "difficulty": 0,
             "task": "Get 3 unique banners"
+        },
+        {
+            "difficulty": 0,
+            "task": "Get any town NPC's unique drop"
         }
     ]
 }
