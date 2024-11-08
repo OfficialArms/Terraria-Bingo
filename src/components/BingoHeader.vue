@@ -24,5 +24,4 @@ defineProps<{
     align-items: center;
 }
 
-
 </style>

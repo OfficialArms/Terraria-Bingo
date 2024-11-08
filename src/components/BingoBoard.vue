@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import { onMounted } from "vue";
 import json from "../tile-data.json";
+import BingoTile from "./BingoTile.vue";
 
 const props = defineProps<{
   size: number
 }>()
 
 // source: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+// TODO: Move this to it's own js file
 function shuffle(array:object[]) {
   let currentIndex = array.length;
 
@@ -23,22 +24,22 @@ function shuffle(array:object[]) {
   }
 }
 
+// Get the data from JSON and trim it
 const allBingoTiles = json.tasks;
-let trimmedBingoTiles;
+shuffle(allBingoTiles);
+const trimmedBingoTiles = allBingoTiles.slice(0, props.size*props.size);
 
-onMounted(() => {
-  // Randomize the tiles and trim it to the right size
-  shuffle(allBingoTiles);
-  console.log("All the tiles after the shuffle:",allBingoTiles);
-  trimmedBingoTiles = allBingoTiles.slice(0, props.size*props.size);
-  console.log("The trimmed Bingo tiles are:", trimmedBingoTiles);
-})
+console.log("All the tiles:",allBingoTiles);
+console.log("The trimmed Bingo tiles are:", trimmedBingoTiles);
 
 </script>
 
 <template>
   <div class="bingo-board">
-    <h1 class="bingo-board-text">The size of the grid is {{ size }}</h1>
+    <BingoTile v-for="(tile,index) in trimmedBingoTiles" 
+              :key="index"
+              :msg="tile.task" 
+              :difficulty="tile.difficulty"/>
   </div>
 </template>
 
@@ -49,7 +50,7 @@ onMounted(() => {
     display: grid;
     grid-template-columns: repeat(v-bind(size), 1fr);
     grid-template-rows: repeat(v-bind(size), 1fr);
-    border: 1px solid red;
+    border: 1px solid black;
 }
 
 .bingo-board-text {
