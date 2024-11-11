@@ -32,17 +32,17 @@ const tileClass = computed(() => stateToColourList[tileState.value]);
 <style scoped>
 
 .tile {
-  border: 1px solid black;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-
   overflow: auto;
-  scrollbar-width: thin;
-  scrollbar-gutter:unset;
+  margin: 6px;
   padding: 10px;
   word-wrap: break-word;
+  
+  border: 2px solid #272052;
+  border-radius: 8px;
 }
   
 .tile-text {
@@ -53,15 +53,18 @@ const tileClass = computed(() => stateToColourList[tileState.value]);
 }
 
 .blank-tile {
-  background-color: white;
+  border-color: #272052;
+  background-color: #3d3183bc;
 }
 
 .collected-tile {
-  background-color: limegreen;
+  border-color: #18371b;
+  background-color: #399131bc;
 }
 
 .taken-tile {
-  background-color: red;
+  border-color: #5d1d1c;
+  background-color: #9b3432bc;
 }
 
 </style>
