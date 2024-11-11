@@ -15,5 +15,7 @@ import BingoHeader from './components/BingoHeader.vue';
   height: 100%;
   display: flex;
   flex-direction: column;
+  background-image: url("/src/images/background.png");
+  color: white;
 }
 </style>
