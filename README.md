@@ -1,6 +1,7 @@
-# terraria-bingo
+# Terraria Bingo 🌳
 
-This template should help get you started developing with Vue 3 in Vite.
+[Play Terraria Bingo now!](https://officialarms.github.io/terraria-bingo/)
+
 
 ## Recommended IDE Setup
 
