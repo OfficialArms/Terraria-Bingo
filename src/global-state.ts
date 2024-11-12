@@ -1,6 +1,6 @@
 import { ref } from 'vue';
 import json from "./tile-data.json";
-import { shuffle } from './useful-functions';
+import Chance from 'chance';
 
 const allBingoTiles = json.tasks;
 const MAX_SEED = 999999999;
@@ -15,8 +15,9 @@ export const setCurrentRandomSeed = (newSeed: number) => { currentRandomSeed.val
 
 export const randomizeListWithSeed = (newSeed: number) => {
   setCurrentRandomSeed(newSeed);
-  shuffle(allBingoTiles, currentRandomSeed.value)
-  bingoTiles.value = allBingoTiles.slice(0, boardSize.value*boardSize.value)
+  const seededGenerator = new Chance(currentRandomSeed.value)
+  const shuffledList = seededGenerator.shuffle(allBingoTiles)
+  bingoTiles.value = shuffledList.slice(0, boardSize.value*boardSize.value)
 };
 
 export const randomizeList = () => {

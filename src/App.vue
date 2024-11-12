@@ -1,11 +1,19 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 import BingoBoard from './components/BingoBoard.vue';
 import BingoHeader from './components/BingoHeader.vue';
-import { boardSize, bingoTiles, currentRandomSeed, randomizeList } from './global-state'
+import { boardSize, bingoTiles, currentRandomSeed, randomizeList, randomizeListWithSeed } from './global-state'
 
-// const allBingoTiles = json.tasks;
-// shuffle(allBingoTiles, currentRandomSeed.value);
-// const bingoTiles = ref(allBingoTiles.slice(0, boardSize.value*boardSize.value));
+// const updateSeed = () => {
+//   const value = this.$refs.seedInput.value
+// }
+
+const newSeed = ref();
+
+const updateSeed = () => {
+  console.log("Randomizing the seed with the number:",newSeed.value)
+  randomizeListWithSeed(newSeed.value)
+};
 
 </script>
 
@@ -13,6 +21,11 @@ import { boardSize, bingoTiles, currentRandomSeed, randomizeList } from './globa
   <div class="parent-grid">
       <BingoHeader msg="This is the Terraria Bingo Zone™!"/>
       <p>Seed: {{ currentRandomSeed }}</p>
+      <div>
+        <label>Set Seed</label>
+        <input type="number" v-model.lazy="newSeed" :placeholder="''+currentRandomSeed"/>
+        <button @click="updateSeed">Confirm</button>
+      </div>
       <button @click="randomizeList">🎲</button>
       <BingoBoard class="bingo-board-area" :size="boardSize" :bingo-tiles="bingoTiles"/>
   </div>
