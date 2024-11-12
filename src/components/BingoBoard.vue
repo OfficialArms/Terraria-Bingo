@@ -10,9 +10,9 @@ const props = defineProps<{
 
 <template>
   <div class="bingo-board">
-    <BingoTile v-for="(tile,index) in props.bingoTiles" 
+    <BingoTile v-for="(tile,index) in props.bingoTiles"
               :key="index"
-              :msg="tile.task" 
+              :msg="tile.task"
               :difficulty="tile.difficulty"/>
   </div>
 </template>

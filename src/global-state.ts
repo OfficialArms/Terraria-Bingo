@@ -15,11 +15,11 @@ export function useComposable() {
     const setCurrentRandomSeed = (newSeed: number) => { currentRandomSeed.value = newSeed}
 
     const randomizeList = () => shuffle(allBingoTiles, currentRandomSeed.value);
-    
+
     // Setters and getters for both
-    // can be defined here 
-    
-    return { 
+    // can be defined here
+
+    return {
         currentRandomSeed,
         boardSize,
         randomizeList,
