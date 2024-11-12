@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import BingoBoard from './components/BingoBoard.vue';
 import BingoHeader from './components/BingoHeader.vue';
-import { boardSize, bingoTiles } from './global-state'
+import { boardSize, bingoTiles, currentRandomSeed, randomizeList } from './global-state'
 
 // const allBingoTiles = json.tasks;
 // shuffle(allBingoTiles, currentRandomSeed.value);
@@ -12,6 +12,8 @@ import { boardSize, bingoTiles } from './global-state'
 <template>
   <div class="parent-grid">
       <BingoHeader msg="This is the Terraria Bingo Zone™!"/>
+      <p>Seed: {{ currentRandomSeed }}</p>
+      <button @click="randomizeList">🎲</button>
       <BingoBoard class="bingo-board-area" :size="boardSize" :bingo-tiles="bingoTiles"/>
   </div>
 </template>

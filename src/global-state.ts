@@ -10,21 +10,21 @@ export const boardSize = ref(4);
 export const currentRandomSeed = ref(Math.floor(Math.random()*MAX_SEED));
 export const bingoTiles = ref(allBingoTiles.slice(0, boardSize.value*boardSize.value));
 
-console.log("The Current Random Seed is:",currentRandomSeed.value);
+export const setBoardSize = (newSize: number) => { boardSize.value = newSize; }
+export const setCurrentRandomSeed = (newSeed: number) => { currentRandomSeed.value = newSeed}
+
+export const randomizeListWithSeed = (newSeed: number) => {
+  setCurrentRandomSeed(newSeed);
+  shuffle(allBingoTiles, currentRandomSeed.value)
+  bingoTiles.value = allBingoTiles.slice(0, boardSize.value*boardSize.value)
+};
+
+export const randomizeList = () => {
+  randomizeListWithSeed(Math.floor(Math.random()*MAX_SEED));
+};
 
 export function useComposable() {
 
-    const setBoardSize = (newSize: number) => { boardSize.value = newSize; }
-    const setCurrentRandomSeed = (newSeed: number) => { currentRandomSeed.value = newSeed}
-
-    const randomizeListWithSeed = (newSeed: number) => {
-      setCurrentRandomSeed(newSeed);
-      shuffle(allBingoTiles, currentRandomSeed.value)
-    };
-
-    const randomizeList = () => {
-      randomizeListWithSeed(Math.floor(Math.random()*MAX_SEED));
-    };
 
     return {
         currentRandomSeed,
