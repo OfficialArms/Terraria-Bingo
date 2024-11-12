@@ -50,9 +50,6 @@ console.log("The trimmed Bingo tiles are:", trimmedBingoTiles);
   display: grid;
   grid-template-columns: repeat(v-bind(size), 1fr);
   grid-template-rows: repeat(v-bind(size), 1fr);
-  margin: 50px;
-  margin-top: 0;
-  overflow: auto;
 }
 
 </style>
