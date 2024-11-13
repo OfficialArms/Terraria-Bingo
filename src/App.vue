@@ -20,13 +20,15 @@ const updateSeed = () => {
 <template>
   <div class="parent-grid">
       <BingoHeader msg="This is the Terraria Bingo Zone™!"/>
-      <p>Seed: {{ currentRandomSeed }}</p>
+      <div style="display: flex; flex-direction: row;">
+        <p>Seed: {{ currentRandomSeed }}</p>
+        <button @click="randomizeList">🎲</button>
+      </div>
       <div>
         <label>Set Seed</label>
         <input type="number" v-model.lazy="newSeed" :placeholder="''+currentRandomSeed"/>
         <button @click="updateSeed">Confirm</button>
       </div>
-      <button @click="randomizeList">🎲</button>
       <BingoBoard class="bingo-board-area" :size="boardSize" :bingo-tiles="bingoTiles"/>
   </div>
 </template>
