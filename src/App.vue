@@ -4,10 +4,6 @@ import BingoBoard from './components/BingoBoard.vue';
 import BingoHeader from './components/BingoHeader.vue';
 import { boardSize, bingoTiles, currentRandomSeed, randomizeList, randomizeListWithSeed } from './global-state'
 
-// const updateSeed = () => {
-//   const value = this.$refs.seedInput.value
-// }
-
 const newSeed = ref();
 
 const updateSeed = () => {
