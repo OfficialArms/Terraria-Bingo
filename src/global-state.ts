@@ -23,16 +23,3 @@ export const randomizeListWithSeed = (newSeed: number) => {
 export const randomizeList = () => {
   randomizeListWithSeed(Math.floor(Math.random()*MAX_SEED));
 };
-
-export function useComposable() {
-
-
-    return {
-        currentRandomSeed,
-        boardSize,
-        randomizeList,
-        randomizeListWithSeed,
-        setBoardSize,
-        setCurrentRandomSeed
-    };
-}

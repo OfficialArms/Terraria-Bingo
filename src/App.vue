@@ -7,7 +7,6 @@ import { boardSize, bingoTiles, currentRandomSeed, randomizeList, randomizeListW
 const newSeed = ref();
 
 const updateSeed = () => {
-  console.log("Randomizing the seed with the number:",newSeed.value)
   randomizeListWithSeed(newSeed.value)
 };
 
