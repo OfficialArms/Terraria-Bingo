@@ -19,7 +19,7 @@ const updateSeed = () => {
 
 <template>
   <div class="parent-grid">
-      <BingoHeader msg="This is the Terraria Bingo Zone™!"/>
+      <BingoHeader msg="Terraria Bingo"/>
       <div style="display: flex; flex-direction: row;">
         <p>Seed: {{ currentRandomSeed }}</p>
         <button @click="randomizeList">🎲</button>
