@@ -2,12 +2,13 @@
 import { ref } from 'vue';
 import BingoBoard from './components/BingoBoard.vue';
 import BingoHeader from './components/BingoHeader.vue';
-import { boardSize, bingoTiles, currentRandomSeed, randomizeList, randomizeListWithSeed } from './global-state'
+import { bingoTiles, boardSize, currentRandomSeed } from './global-state'
+import { randomizeBoard, randomizeBoardWithSeed } from './utilities/randomization';
 
 const newSeed = ref();
 
 const updateSeed = () => {
-  randomizeListWithSeed(newSeed.value)
+  randomizeBoardWithSeed(newSeed.value)
 };
 
 </script>
@@ -17,7 +18,7 @@ const updateSeed = () => {
       <BingoHeader msg="Terraria Bingo"/>
       <div style="display: flex; flex-direction: row;">
         <p>Seed: {{ currentRandomSeed }}</p>
-        <button @click="randomizeList">🎲</button>
+        <button @click="randomizeBoard">🎲</button>
       </div>
       <div>
         <label>Set Seed</label>
