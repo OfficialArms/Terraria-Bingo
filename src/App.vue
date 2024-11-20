@@ -3,7 +3,7 @@ import { ref } from 'vue';
 import BingoBoard from './components/BingoBoard.vue';
 import BingoHeader from './components/BingoHeader.vue';
 import { bingoTiles, boardSize, currentRandomSeed } from './global-state'
-import { randomizeBoard, randomizeBoardWithSeed } from './utilities/randomization';
+import { randomizeBoard, randomizeBoardWithSeed } from './util/randomization';
 
 const newSeed = ref();
 

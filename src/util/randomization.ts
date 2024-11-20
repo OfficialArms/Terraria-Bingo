@@ -1,7 +1,6 @@
 import Chance from 'chance';
 import { allBingoTiles, bingoTiles, boardSize, currentRandomSeed, setCurrentRandomSeed } from '@/global-state';
-
-export const MAX_SEED = 999999999;
+import { DEFAULT_BOARD_SIZE } from './config';
 
 export const randomizeBoardWithSeed = (newSeed: number) => {
   setCurrentRandomSeed(newSeed);
