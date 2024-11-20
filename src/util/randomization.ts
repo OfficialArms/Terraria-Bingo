@@ -1,11 +1,11 @@
 import Chance from 'chance';
-import { allBingoTiles, bingoTiles, boardSize, currentRandomSeed, setCurrentRandomSeed } from '@/global-state';
-import { DEFAULT_BOARD_SIZE } from './config';
+import { bingoTiles, boardSize, currentRandomSeed } from '@/global-state';
+import { ALL_BINGO_TILES, MAX_SEED } from './config';
 
 export const randomizeBoardWithSeed = (newSeed: number) => {
-  setCurrentRandomSeed(newSeed);
+  currentRandomSeed.value = newSeed;
   const seededGenerator = new Chance(currentRandomSeed.value)
-  const shuffledList = seededGenerator.shuffle(allBingoTiles)
+  const shuffledList = seededGenerator.shuffle(ALL_BINGO_TILES)
   bingoTiles.value = shuffledList.slice(0, boardSize.value*boardSize.value)
 }
 
