@@ -1,24 +1,29 @@
 <script setup lang="ts">
-import BingoTile from "./BingoTile.vue";
+import { currentRandomSeed } from '@/global-state';
+import BingoTile from './BingoTile.vue';
+import { watch } from 'vue';
+import { randomizeBoardWithSeed } from '@/util/randomization';
 
 const props = defineProps<{
-  size: number,
-  bingoTiles: {task: string, difficulty: number}[]
-}>()
+  size: number;
+  bingoTiles: { task: string; difficulty: number }[];
+}>();
 
+watch(currentRandomSeed, () => randomizeBoardWithSeed(currentRandomSeed.value));
 </script>
 
 <template>
   <div class="bingo-board">
-    <BingoTile v-for="(tile,index) in props.bingoTiles"
-              :key="index"
-              :msg="tile.task"
-              :difficulty="tile.difficulty"/>
+    <BingoTile
+      v-for="(tile, index) in props.bingoTiles"
+      :key="index"
+      :msg="tile.task"
+      :difficulty="tile.difficulty"
+    />
   </div>
 </template>
 
 <style scoped>
-
 .bingo-board {
   height: 100%;
   display: grid;
@@ -28,5 +33,4 @@ const props = defineProps<{
   margin-top: 0;
   overflow: auto;
 }
-
 </style>
