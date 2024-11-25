@@ -12,6 +12,10 @@ const newSeed = ref()
 const toggleSettings = () => {
   isDialogOpen.value = !isDialogOpen.value
 }
+
+const updateSeed = () => {
+  currentRandomSeed.value = newSeed.value
+}
 </script>
 
 <!-- // TODO: make is so that you can close the menu by clicking outside the modal -->

@@ -1,10 +1,17 @@
 <script setup lang="ts">
-import { boardSize } from '@/global-state'
+import { boardSize, currentRandomSeed } from '@/global-state'
 import BingoSeed from './BingoSeed.vue'
+import { ref } from 'vue'
+
+const newSeed = ref()
 
 const updateBoardSize = (newSize: number) => {
   console.log('Calling updateBoardSize, Value is: ', newSize)
   boardSize.value = newSize
+}
+
+const updateSeed = () => {
+  currentRandomSeed.value = newSeed.value
 }
 </script>
 
