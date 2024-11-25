@@ -1,15 +1,19 @@
 <script setup lang="ts">
-import { currentRandomSeed } from '@/global-state';
-import BingoTile from './BingoTile.vue';
-import { watch } from 'vue';
-import { randomizeBoardWithSeed } from '@/util/randomization';
+import { currentRandomSeed } from '@/global-state'
+import BingoTile from './BingoTile.vue'
+import { watch } from 'vue'
+import { randomizeBoardWithSeed } from '@/util/randomization'
 
 const props = defineProps<{
-  size: number;
-  bingoTiles: { task: string; difficulty: number }[];
-}>();
+  size: number
+  bingoTiles: { task: string; difficulty: number }[]
+}>()
 
-watch(currentRandomSeed, () => randomizeBoardWithSeed(currentRandomSeed.value));
+watch(currentRandomSeed, () => randomizeBoardWithSeed(currentRandomSeed.value))
+
+// watch(boardSize, () => {
+//   trimmedBingoTiles = allBingoTiles.slice(0, props.size * props.size)
+// })
 </script>
 
 <template>
