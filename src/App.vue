@@ -1,23 +1,22 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
-import BingoBoard from './components/BingoBoard.vue'
-import BingoHeader from './components/BingoHeader.vue'
-import BingoSettings from './components/BingoSettings.vue'
-import { bingoTiles, boardSize, currentRandomSeed } from './global-state'
-import { randomizeSeed } from './util/randomization'
-import { ALL_BINGO_TILES } from './util/config'
+import { ref, watch } from 'vue';
+import BingoBoard from './components/BingoBoard.vue';
+import BingoHeader from './components/BingoHeader.vue';
+import BingoSettings from './components/BingoSettings.vue';
+import { bingoTiles, boardSize, currentRandomSeed } from './global-state';
+import { randomizeSeed } from './util/randomization';
+import { ALL_BINGO_TILES } from './util/config';
 
-const isDialogOpen = ref(false)
-const newSeed = ref()
+const isDialogOpen = ref(false);
 
 const toggleSettings = () => {
-  isDialogOpen.value = !isDialogOpen.value
-}
+  isDialogOpen.value = !isDialogOpen.value;
+};
 
 // Update how many tiles are sent when the board size changes
 watch(boardSize, () => {
-  bingoTiles.value = ALL_BINGO_TILES.slice(0, boardSize.value * boardSize.value)
-})
+  bingoTiles.value = ALL_BINGO_TILES.slice(0, boardSize.value * boardSize.value);
+});
 </script>
 
 <!-- // TODO: make is so that you can close the menu by clicking outside the modal -->

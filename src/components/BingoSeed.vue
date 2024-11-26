@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import { currentRandomSeed } from '@/global-state'
-import { ref } from 'vue'
+import { currentRandomSeed } from '@/global-state';
+import { ref } from 'vue';
 
-const newSeed = ref(currentRandomSeed.value)
-const isEditing = ref(false)
+const newSeed = ref(currentRandomSeed.value);
+const isEditing = ref(false);
 
 const clickEdit = () => {
-  isEditing.value = true
-}
+  isEditing.value = true;
+};
 
 const clickConfirm = () => {
-  isEditing.value = false
-  currentRandomSeed.value = newSeed.value
-}
+  isEditing.value = false;
+  currentRandomSeed.value = newSeed.value;
+};
 </script>
 
 <template>
@@ -28,11 +28,6 @@ const clickConfirm = () => {
         <button @click="clickConfirm">✔</button>
       </div>
     </div>
-    <div class="seed-input">
-      <label>Set seed: </label>
-      <input type="number" placeholder="Enter your seed here" />
-      <button>✔</button>
-    </div>
   </div>
 </template>
 
@@ -42,7 +37,7 @@ const clickConfirm = () => {
   flex-direction: column;
 }
 
-.container > div {
+.container>div {
   padding: 10px 20px;
 }
 
@@ -55,23 +50,22 @@ const clickConfirm = () => {
   display: flex;
 }
 
-.seed > div {
+.seed>div {
   font-size: 35px;
 }
 
-.seed-input > label {
+.seed-input>label {
   font-size: 35px;
 }
 
-.seed-input > input {
+.seed-input>input {
   padding: 10px;
   height: 35px;
   border-radius: 4px;
   resize: none;
 }
 
-.seed-input > button {
-}
+.seed-input>button {}
 
 /* Remove the arrows on input field - Specific per browser types */
 

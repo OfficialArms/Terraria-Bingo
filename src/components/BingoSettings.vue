@@ -1,19 +1,14 @@
 <script setup lang="ts">
-import { boardSize, currentRandomSeed } from '@/global-state'
-import BingoSeed from './BingoSeed.vue'
-import { ref } from 'vue'
-
-const newSeed = ref()
+import { boardSize } from '@/global-state';
+import BingoSeed from './BingoSeed.vue';
 
 const updateBoardSize = (newSize: number) => {
-  console.log('Calling updateBoardSize, Value is: ', newSize)
-  boardSize.value = newSize
-}
-
-const updateSeed = () => {
-  currentRandomSeed.value = newSeed.value
-}
+  console.log('Calling updateBoardSize, Value is: ', newSize);
+  boardSize.value = newSize;
+};
 </script>
+
+<!-- TODO: Make it so there is a tool tip at the bottom based on hovered element -->
 
 <template>
   <div class="dialog-container">
