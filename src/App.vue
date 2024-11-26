@@ -6,8 +6,7 @@ import BingoSettings from './components/BingoSettings.vue';
 import { bingoTiles, boardSize, currentRandomSeed } from './global-state';
 import { randomizeSeed } from './util/randomization';
 import { ALL_BINGO_TILES } from './util/config';
-import SettingsButtonIcon from './images/SettingsButtonicon.png';
-import SettingsButtonIconHighlighted from './images/SettingsButtonIconHighlighted.png';
+import SettingsButton from './components/Settings/SettingsButton.vue';
 
 const isDialogOpen = ref(false);
 
@@ -19,18 +18,6 @@ const toggleSettings = () => {
 watch(boardSize, () => {
   bingoTiles.value = ALL_BINGO_TILES.slice(0, boardSize.value * boardSize.value);
 });
-
-//TODO: MOVE THIS STUFF TO THEIR OWN COMPONENT
-
-const settingsIcons = {
-  onHover: SettingsButtonIconHighlighted,
-  offHover: SettingsButtonIcon
-};
-
-const settingsSource = ref(settingsIcons.offHover);
-
-const setSettingMouseHover = () => { settingsSource.value = settingsIcons.onHover; };
-const setSettingMouseLeave = () => { settingsSource.value = settingsIcons.offHover; }
 
 </script>
 
@@ -45,10 +32,7 @@ const setSettingMouseLeave = () => { settingsSource.value = settingsIcons.offHov
           <p>Seed: {{ currentRandomSeed }}</p>
           <img class="random-button" src="./images/RandomDieIcon.png" @click="randomizeSeed" />
         </div>
-        <div class="bingo-settings-button">
-          <img class="settings-button" v-bind:src="settingsSource" :onclick="toggleSettings"
-            @mouseover="setSettingMouseHover" @mouseleave="setSettingMouseLeave" />
-        </div>
+        <SettingsButton :onclick="toggleSettings" />
       </div>
       <BingoSettings v-if="isDialogOpen" />
       <BingoBoard class="bingo-board-area" :size="boardSize" :bingo-tiles="bingoTiles" />
@@ -84,10 +68,6 @@ const setSettingMouseLeave = () => { settingsSource.value = settingsIcons.offHov
   image-rendering: pixelated;
   display: block;
   margin: auto;
-  cursor: pointer;
-}
-
-.settings-button {
   cursor: pointer;
 }
 </style>
