@@ -14,10 +14,6 @@ const toggleSettings = () => {
   isDialogOpen.value = !isDialogOpen.value
 }
 
-const updateSeed = () => {
-  currentRandomSeed.value = newSeed.value
-}
-
 // Update how many tiles are sent when the board size changes
 watch(boardSize, () => {
   bingoTiles.value = ALL_BINGO_TILES.slice(0, boardSize.value * boardSize.value)
@@ -40,11 +36,6 @@ watch(boardSize, () => {
         </div>
       </div>
       <BingoSettings v-if="isDialogOpen" />
-      <div>
-        <label>Set Seed</label>
-        <input type="number" v-model.lazy="newSeed" :placeholder="'' + currentRandomSeed" />
-        <button @click="updateSeed">Confirm</button>
-      </div>
       <BingoBoard class="bingo-board-area" :size="boardSize" :bingo-tiles="bingoTiles" />
     </div>
   </div>
