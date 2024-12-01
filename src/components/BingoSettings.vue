@@ -1,6 +1,19 @@
 <script setup lang="ts">
 import { boardSize } from '@/global-state';
-import BingoSeed from './BingoSeed.vue';
+import BingoSeed from './Settings/BingoSeed.vue';
+import { ref } from 'vue';
+
+const DEFAULT_TOOL_TIP = "Please choose how you want to play with the options above";
+
+const toolTipText = ref(DEFAULT_TOOL_TIP);
+
+const updateToolTip = (toolTip: string) => {
+  if (toolTip == "") {
+    toolTipText.value = DEFAULT_TOOL_TIP;
+  } else {
+    toolTipText.value = toolTip;
+  }
+};
 
 const updateBoardSize = (newSize: number) => {
   console.log('Calling updateBoardSize, Value is: ', newSize);
@@ -13,7 +26,7 @@ const updateBoardSize = (newSize: number) => {
 <template>
   <div class="dialog-container">
     <div class="settings-content">
-      <BingoSeed />
+      <BingoSeed :setHoverToolTip="updateToolTip" />
     </div>
     <div class="size-container">
       <button @click="updateBoardSize(3)">small</button>
@@ -45,11 +58,7 @@ const updateBoardSize = (newSize: number) => {
   min-width: 50vw;
 }
 
-.settings-content {
-  /* padding: 30px; */
-  height: 100%;
-  overflow: auto;
-}
+
 
 .size-container {
   display: flex;

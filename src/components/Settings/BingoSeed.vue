@@ -1,6 +1,22 @@
 <script setup lang="ts">
 import { currentRandomSeed } from '@/global-state';
 import { ref } from 'vue';
+import SeedIcon from '../../images/SeedIcon.png';
+import SeedIconHighlighted from '../../images/SeedIconHighlighted.png';
+
+const props = defineProps<{
+  setHoverToolTip: (toolTip: string) => void;
+}>();
+
+const seedIcons = {
+  onHover: SeedIconHighlighted,
+  offHover: SeedIcon
+};
+
+const seedSource = ref(seedIcons.offHover);
+
+const setSeedMouseHover = () => { seedSource.value = seedIcons.onHover; };
+const setSeedMouseLeave = () => { seedSource.value = seedIcons.offHover; };
 
 const newSeed = ref(currentRandomSeed.value);
 const isEditing = ref(false);
@@ -15,18 +31,24 @@ const clickConfirm = () => {
 };
 </script>
 
+<!-- TODO: Rename the classes. They're way too similar -->
+
 <template>
   <div class="container">
     <div class="seed">
-      <div>Seed:</div>
-      <div v-if="!isEditing" class="edit-seed-container">
-        <div>{{ currentRandomSeed }}</div>
+      <img class='seed-icon' v-bind:src="seedSource" @mouseover="setSeedMouseHover" @mouseleave="setSeedMouseLeave" />
+      <div class="seed-text-container">
+        {{ "Seed: " + currentRandomSeed }}
+      </div>
+
+      <!-- <div v-if="!isEditing" class="edit-seed-container">
+        <div>{{ "Seed: " + currentRandomSeed }}</div>
         <button @click="clickEdit">Edit</button>
       </div>
       <div v-else>
         <input v-model="newSeed" />
         <button @click="clickConfirm">✔</button>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -34,12 +56,9 @@ const clickConfirm = () => {
 <style>
 .container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 
-.container>div {
-  padding: 10px 20px;
-}
 
 .edit-seed-container {
   display: flex;
@@ -54,6 +73,10 @@ const clickConfirm = () => {
   font-size: 35px;
 }
 
+.seed-icon {
+  cursor: pointer;
+}
+
 .seed-input>label {
   font-size: 35px;
 }
@@ -66,6 +89,11 @@ const clickConfirm = () => {
 }
 
 .seed-input>button {}
+
+.seed-text-container {
+  width: 100%;
+  background-color: red;
+}
 
 /* Remove the arrows on input field - Specific per browser types */
 
