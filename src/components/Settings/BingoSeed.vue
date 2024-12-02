@@ -3,6 +3,8 @@ import { currentRandomSeed } from '@/global-state';
 import { ref } from 'vue';
 import SeedIcon from '../../images/SeedIcon.png';
 import SeedIconHighlighted from '../../images/SeedIconHighlighted.png';
+import TextBackground from '../../images/TextBackground.png';
+import TextBackgroundHighlighted from '../../images/TextBackgroundHighlighted.png';
 
 const props = defineProps<{
   setHoverToolTip: (toolTip: string) => void;
@@ -13,13 +15,25 @@ const seedIcons = {
   offHover: SeedIcon
 };
 
+const textBackgroundIcons = {
+  onFocus: TextBackgroundHighlighted,
+  offFocus: TextBackground
+};
+
 const seedSource = ref(seedIcons.offHover);
+const textBackgroundSource = ref(textBackgroundIcons.offFocus);
+const newSeed = ref(currentRandomSeed.value);
+const isEditing = ref(false);
 
 const setSeedMouseHover = () => { seedSource.value = seedIcons.onHover; };
 const setSeedMouseLeave = () => { seedSource.value = seedIcons.offHover; };
 
-const newSeed = ref(currentRandomSeed.value);
-const isEditing = ref(false);
+const setInputHighlightOn = () => { textBackgroundSource.value = textBackgroundIcons.onFocus; };
+const setInputHighlightOff = () => {
+  if (!isEditing.value) {
+    textBackgroundSource.value = textBackgroundIcons.offFocus;
+  }
+};
 
 const editSeedHandler = () => {
   isEditing.value = true;
@@ -27,6 +41,7 @@ const editSeedHandler = () => {
 
 const stopEditingSeedHandler = () => {
   isEditing.value = false;
+  setInputHighlightOff();
   currentRandomSeed.value = newSeed.value;
 };
 </script>
@@ -36,10 +51,11 @@ const stopEditingSeedHandler = () => {
 <template>
   <div class="seed-container">
     <img class='seed-icon' v-bind:src="seedSource" @mouseover="setSeedMouseHover" @mouseleave="setSeedMouseLeave" />
-    <div class="seed-input-container">
-      <label class="seed-label" for="seed-input">Seed: </label>
-      <input id="seed-input" class="seed-input" @focus="editSeedHandler" @blur="currentRandomSeed = newSeed"
-        v-model="currentRandomSeed" />
+    <div class="seed-input-container" @mouseover="setInputHighlightOn" @mouseleave="setInputHighlightOff"
+      v-bind:style="{ 'background-image': 'url(' + textBackgroundSource + ')' }">
+      <label class=" seed-label" for="seed-input">Seed: </label>
+      <input id="seed-input" class="seed-input" @focus="editSeedHandler" @blur="stopEditingSeedHandler"
+        v-model="newSeed" />
     </div>
   </div>
 </template>
