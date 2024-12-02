@@ -2,6 +2,12 @@
 import { boardSize } from '@/global-state';
 import BingoSeed from './BingoSeed.vue';
 import { ref } from 'vue';
+import ButtonOption from './ButtonRow/ButtonOption.vue';
+
+// REMOVE THIS!!
+import SmallSizeIcon from '../../images/SmallSizeIcon.png';
+import MediumSizeIcon from '../../images/MediumSizeIcon.png';
+import LargeSizeIcon from '../../images/LargeSizeIcon.png';
 
 const DEFAULT_TOOL_TIP = "Please choose how you want to play with the options above";
 
@@ -26,20 +32,26 @@ const updateBoardSize = (newSize: number) => {
 <template>
   <div class="dialog-container">
     <BingoSeed :setHoverToolTip="updateToolTip" />
-    <hr style="width: 100%;">
+    <hr>
     <div class="size-container">
       <button @click="updateBoardSize(3)">small</button>
       <button @click="updateBoardSize(4)">medium</button>
       <button @click="updateBoardSize(5)">large</button>
     </div>
-    <hr style="width: 100%;">
+    <hr>
     <div class="size-container">
       <button>Journey</button>
       <button>Classic</button>
       <button>Expert</button>
       <button>Master</button>
     </div>
-    <hr style="width: 100%;">
+    <hr>
+    <div style="display: flex; flex-direction: row; justify-content: space-evenly;">
+      <ButtonOption :imageSource="SmallSizeIcon" optionName="Small" />
+      <ButtonOption :imageSource="MediumSizeIcon" optionName="Medium" />
+      <ButtonOption :imageSource="LargeSizeIcon" optionName="Large" />
+    </div>
+    <hr>
     <p style="text-align: center;">
       Put Tooltip Here
     </p>
@@ -47,6 +59,10 @@ const updateBoardSize = (newSize: number) => {
 </template>
 
 <style>
+hr {
+  width: 100%;
+}
+
 .dialog-container {
   display: flex;
   flex-direction: column;
