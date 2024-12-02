@@ -14,7 +14,7 @@ const updateSeed = () => {
 
 <template>
   <div class="parent-grid">
-    <BingoHeader msg="Terraria Bingo" />
+    <BingoHeader class="header"/>
     <div style="display: flex; flex-direction: row">
       <p>Seed: {{ currentRandomSeed }}</p>
       <button @click="randomizeSeed">🎲</button>
@@ -33,6 +33,11 @@ const updateSeed = () => {
 @font-face {
   font-family: "andy";
   src: url(./fonts/ANDYB.TTF);
+}
+
+.header {
+  display: flex;
+  justify-content: center;
 }
 
 .parent-grid {
