@@ -25,9 +25,7 @@ const updateBoardSize = (newSize: number) => {
 
 <template>
   <div class="dialog-container">
-    <div class="settings-content">
-      <BingoSeed :setHoverToolTip="updateToolTip" />
-    </div>
+    <BingoSeed :setHoverToolTip="updateToolTip" />
     <div class="size-container">
       <button @click="updateBoardSize(3)">small</button>
       <button @click="updateBoardSize(4)">medium</button>
