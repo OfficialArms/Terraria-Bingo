@@ -21,11 +21,11 @@ const setSeedMouseLeave = () => { seedSource.value = seedIcons.offHover; };
 const newSeed = ref(currentRandomSeed.value);
 const isEditing = ref(false);
 
-const clickEdit = () => {
+const editSeedHandler = () => {
   isEditing.value = true;
 };
 
-const clickConfirm = () => {
+const stopEditingSeedHandler = () => {
   isEditing.value = false;
   currentRandomSeed.value = newSeed.value;
 };
@@ -34,12 +34,12 @@ const clickConfirm = () => {
 <!-- TODO: Rename the classes. They're way too similar -->
 
 <template>
-  <div class="container">
-    <div class="seed">
-      <img class='seed-icon' v-bind:src="seedSource" @mouseover="setSeedMouseHover" @mouseleave="setSeedMouseLeave" />
-      <input class="seed-text-input" :value="'Seed: ' + currentRandomSeed" />
+  <div class="seed">
+    <img class='seed-icon' v-bind:src="seedSource" @mouseover="setSeedMouseHover" @mouseleave="setSeedMouseLeave" />
+    <input class="seed-text-input" @focus="editSeedHandler" @blur="stopEditingSeedHandler"
+      :value="'Seed: ' + currentRandomSeed" />
 
-      <!-- <div v-if="!isEditing" class="edit-seed-container">
+    <!-- <div v-if="!isEditing" class="edit-seed-container">
         <div>{{ "Seed: " + currentRandomSeed }}</div>
         <button @click="clickEdit">Edit</button>
       </div>
@@ -47,7 +47,6 @@ const clickConfirm = () => {
         <input v-model="newSeed" />
         <button @click="clickConfirm">✔</button>
       </div> -->
-    </div>
   </div>
 </template>
 
@@ -65,6 +64,7 @@ const clickConfirm = () => {
 
 .seed {
   display: flex;
+  width: 100%;
 }
 
 .seed>div {
