@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue';
 
 const props = defineProps<{
   imageSource: string;
@@ -10,22 +9,51 @@ const props = defineProps<{
 </script>
 
 <template>
-  <div class="container">
-    <img class="option-image" v-bind:src="imageSource" />
-    <p>{{ optionName }}</p>
+  <div class="button-container">
+    <div class="selected-container" :class="{ 'selected-background': isSelected }">
+      <img class="option-image" v-bind:src="imageSource" />
+      <p class="option-name">{{ optionName }}</p>
+    </div>
   </div>
 </template>
 
 <style>
-.container {
+.option-name {
+  display: flex;
+  margin: 0;
+}
+
+.button-container {
+  padding: 20px;
   display: flex;
   flex-direction: row;
+
+  background-image: url("../../../images/ButtonBackground.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+  image-rendering: pixelated;
+}
+
+.selected-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.selected-background {
+  background-image: url('../../../images/ButtonBackgroundSelected.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+  image-rendering: pixelated;
 }
 
 .option-image {
   display: flex;
-  object-fit: contain;
+  object-fit: none;
   image-rendering: pixelated;
+  height: fit-content;
 }
 
 .seed-input-container {
