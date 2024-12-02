@@ -2,7 +2,7 @@
 import { ref, watch } from 'vue';
 import BingoBoard from './components/BingoBoard.vue';
 import BingoHeader from './components/BingoHeader.vue';
-import BingoSettings from './components/BingoSettings.vue';
+import BingoSettings from './components/Settings/BingoSettings.vue';
 import { bingoTiles, boardSize, currentRandomSeed } from './global-state';
 import { randomizeSeed } from './util/randomization';
 import { ALL_BINGO_TILES } from './util/config';

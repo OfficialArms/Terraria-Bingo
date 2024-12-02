@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { boardSize } from '@/global-state';
-import BingoSeed from './Settings/BingoSeed.vue';
+import BingoSeed from './BingoSeed.vue';
 import { ref } from 'vue';
 
 const DEFAULT_TOOL_TIP = "Please choose how you want to play with the options above";
