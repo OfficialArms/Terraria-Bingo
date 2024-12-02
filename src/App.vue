@@ -29,12 +29,6 @@ const updateSeed = () => {
 </template>
 
 <style scoped>
-
-@font-face {
-  font-family: "andy";
-  src: url(./fonts/ANDYB.TTF);
-}
-
 .header {
   display: flex;
   justify-content: center;
