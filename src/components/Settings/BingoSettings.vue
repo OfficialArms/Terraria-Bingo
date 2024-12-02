@@ -26,17 +26,23 @@ const updateBoardSize = (newSize: number) => {
 <template>
   <div class="dialog-container">
     <BingoSeed :setHoverToolTip="updateToolTip" />
+    <hr style="width: 100%;">
     <div class="size-container">
       <button @click="updateBoardSize(3)">small</button>
       <button @click="updateBoardSize(4)">medium</button>
       <button @click="updateBoardSize(5)">large</button>
     </div>
+    <hr style="width: 100%;">
     <div class="size-container">
       <button>Journey</button>
       <button>Classic</button>
       <button>Expert</button>
       <button>Master</button>
     </div>
+    <hr style="width: 100%;">
+    <p style="text-align: center;">
+      Put Tooltip Here
+    </p>
   </div>
 </template>
 
