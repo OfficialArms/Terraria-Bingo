@@ -35,6 +35,10 @@ const setInputHighlightOff = () => {
   }
 };
 
+const copySeed = () => {
+  navigator.clipboard.writeText(`${currentRandomSeed.value}`);
+};
+
 const editSeedHandler = () => {
   isEditing.value = true;
 };
@@ -63,7 +67,8 @@ watch(currentRandomSeed, () => {
 
 <template>
   <div class="seed-container">
-    <img class='seed-icon' v-bind:src="seedSource" @mouseover="setSeedMouseHover" @mouseleave="setSeedMouseLeave" />
+    <img class='seed-icon' v-bind:src="seedSource" @mouseover="setSeedMouseHover" @mouseleave="setSeedMouseLeave"
+      @click="copySeed" />
     <div class="seed-input-container" @mouseover="setInputHighlightOn" @mouseleave="setInputHighlightOff"
       v-bind:style="{ 'background-image': 'url(' + textBackgroundSource + ')' }">
       <label class="seed-label" for="seed-input">Seed: </label>
