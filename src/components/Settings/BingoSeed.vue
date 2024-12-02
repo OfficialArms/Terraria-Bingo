@@ -37,9 +37,7 @@ const clickConfirm = () => {
   <div class="container">
     <div class="seed">
       <img class='seed-icon' v-bind:src="seedSource" @mouseover="setSeedMouseHover" @mouseleave="setSeedMouseLeave" />
-      <div class="seed-text-container">
-        {{ "Seed: " + currentRandomSeed }}
-      </div>
+      <input class="seed-text-input" :value="'Seed: ' + currentRandomSeed" />
 
       <!-- <div v-if="!isEditing" class="edit-seed-container">
         <div>{{ "Seed: " + currentRandomSeed }}</div>
@@ -90,9 +88,17 @@ const clickConfirm = () => {
 
 .seed-input>button {}
 
-.seed-text-container {
+.seed-text-input {
   width: 100%;
-  background-color: red;
+  /* background-color: red; */
+  background: rgba(0, 0, 0, 0);
+  background-image: url("../../images/Text_Back.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+  image-rendering: pixelated;
+  border: none;
+
 }
 
 /* Remove the arrows on input field - Specific per browser types */
