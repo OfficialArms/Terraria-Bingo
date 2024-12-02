@@ -36,8 +36,11 @@ const stopEditingSeedHandler = () => {
 <template>
   <div class="seed-container">
     <img class='seed-icon' v-bind:src="seedSource" @mouseover="setSeedMouseHover" @mouseleave="setSeedMouseLeave" />
-    <input class="seed-text-input" @focus="editSeedHandler" @blur="stopEditingSeedHandler"
-      :value="'Seed: ' + currentRandomSeed" />
+    <div class="seed-input-container">
+      <label class="seed-label" for="seed-input">Seed: </label>
+      <input id="seed-input" class="seed-input" @focus="editSeedHandler" @blur="currentRandomSeed = newSeed"
+        v-model="currentRandomSeed" />
+    </div>
   </div>
 </template>
 
@@ -57,17 +60,32 @@ const stopEditingSeedHandler = () => {
   cursor: pointer;
 }
 
-.seed-text-input {
+.seed-label {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.seed-input-container {
   width: 100%;
-  /* background-color: red; */
-  background: rgba(0, 0, 0, 0);
+  display: flex;
   background-image: url("../../images/Text_Back.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100% 100%;
   image-rendering: pixelated;
-  border: none;
+}
 
+.seed-input {
+  width: 100%;
+  height: 100%;
+  /* background-color: red; */
+  background: rgba(0, 0, 0, 0);
+  border: none;
+  font-size: 35px;
+}
+
+.seed-input:focus {
+  outline: none;
 }
 
 /* Remove the arrows on input field - Specific per browser types */
