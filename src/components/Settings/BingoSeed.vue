@@ -44,6 +44,14 @@ const stopEditingSeedHandler = () => {
   setInputHighlightOff();
   currentRandomSeed.value = newSeed.value;
 };
+
+const handleKeyPress = (event: KeyboardEvent) => {
+  if (event.key === "Enter" || event.key === "Escape") {
+    stopEditingSeedHandler();
+    event.target.blur();
+    console.log("THE type of the event is: ", event.type);
+  }
+};
 </script>
 
 <!-- TODO: Rename the classes. They're way too similar -->
@@ -55,7 +63,7 @@ const stopEditingSeedHandler = () => {
       v-bind:style="{ 'background-image': 'url(' + textBackgroundSource + ')' }">
       <label class=" seed-label" for="seed-input">Seed: </label>
       <input id="seed-input" class="seed-input" @focus="editSeedHandler" @blur="stopEditingSeedHandler"
-        v-model="newSeed" />
+        @keyup="handleKeyPress" v-model="newSeed" />
     </div>
   </div>
 </template>
