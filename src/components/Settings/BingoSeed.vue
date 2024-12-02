@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { currentRandomSeed } from '@/global-state';
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import SeedIcon from '../../images/SeedIcon.png';
 import SeedIconHighlighted from '../../images/SeedIconHighlighted.png';
 import TextBackground from '../../images/TextBackground.png';
@@ -48,20 +48,25 @@ const stopEditingSeedHandler = () => {
 const handleKeyPress = (event: KeyboardEvent) => {
   if (event.key === "Enter" || event.key === "Escape") {
     stopEditingSeedHandler();
+    // @ts-expect-error ---
     event.target.blur();
-    console.log("THE type of the event is: ", event.type);
+    console.log("THE type of the event is: ", event);
   }
 };
-</script>
 
-<!-- TODO: Rename the classes. They're way too similar -->
+// Update the seed being displayed if the seed gets randomized
+watch(currentRandomSeed, () => {
+  newSeed.value = currentRandomSeed.value;
+});
+
+</script>
 
 <template>
   <div class="seed-container">
     <img class='seed-icon' v-bind:src="seedSource" @mouseover="setSeedMouseHover" @mouseleave="setSeedMouseLeave" />
     <div class="seed-input-container" @mouseover="setInputHighlightOn" @mouseleave="setInputHighlightOff"
       v-bind:style="{ 'background-image': 'url(' + textBackgroundSource + ')' }">
-      <label class=" seed-label" for="seed-input">Seed: </label>
+      <label class="seed-label" for="seed-input">Seed: </label>
       <input id="seed-input" class="seed-input" @focus="editSeedHandler" @blur="stopEditingSeedHandler"
         @keyup="handleKeyPress" v-model="newSeed" />
     </div>
@@ -80,13 +85,14 @@ const handleKeyPress = (event: KeyboardEvent) => {
   font-size: 35px;
 }
 
-.seed-container-icon {
+.seed-icon {
   cursor: pointer;
 }
 
 .seed-label {
   padding-left: 10px;
   padding-right: 10px;
+  cursor: pointer;
 }
 
 .seed-input-container {
@@ -110,6 +116,11 @@ const handleKeyPress = (event: KeyboardEvent) => {
 
 .seed-input:focus {
   outline: none;
+  cursor: text;
+}
+
+.seed-input:not(:focus) {
+  cursor: pointer;
 }
 
 /* Remove the arrows on input field - Specific per browser types */
