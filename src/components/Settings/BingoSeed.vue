@@ -34,59 +34,28 @@ const stopEditingSeedHandler = () => {
 <!-- TODO: Rename the classes. They're way too similar -->
 
 <template>
-  <div class="seed">
+  <div class="seed-container">
     <img class='seed-icon' v-bind:src="seedSource" @mouseover="setSeedMouseHover" @mouseleave="setSeedMouseLeave" />
     <input class="seed-text-input" @focus="editSeedHandler" @blur="stopEditingSeedHandler"
       :value="'Seed: ' + currentRandomSeed" />
-
-    <!-- <div v-if="!isEditing" class="edit-seed-container">
-        <div>{{ "Seed: " + currentRandomSeed }}</div>
-        <button @click="clickEdit">Edit</button>
-      </div>
-      <div v-else>
-        <input v-model="newSeed" />
-        <button @click="clickConfirm">✔</button>
-      </div> -->
   </div>
 </template>
 
 <style>
-.container {
-  display: flex;
-  flex-direction: row;
-}
-
-
 .edit-seed-container {
   display: flex;
   flex-direction: row;
 }
 
-.seed {
+.seed-container {
   display: flex;
   width: 100%;
-}
-
-.seed>div {
   font-size: 35px;
 }
 
-.seed-icon {
+.seed-container-icon {
   cursor: pointer;
 }
-
-.seed-input>label {
-  font-size: 35px;
-}
-
-.seed-input>input {
-  padding: 10px;
-  height: 35px;
-  border-radius: 4px;
-  resize: none;
-}
-
-.seed-input>button {}
 
 .seed-text-input {
   width: 100%;
