@@ -25,11 +25,21 @@ const textBackgroundSource = ref(textBackgroundIcons.offFocus);
 const newSeed = ref(currentRandomSeed.value);
 const isEditing = ref(false);
 
-const setSeedMouseHover = () => { seedSource.value = seedIcons.onHover; };
-const setSeedMouseLeave = () => { seedSource.value = seedIcons.offHover; };
+const setSeedMouseHover = () => {
+  props.setHoverToolTip("Copy your seed to clipboard");
+  seedSource.value = seedIcons.onHover;
+};
+const setSeedMouseLeave = () => {
+  props.setHoverToolTip("");
+  seedSource.value = seedIcons.offHover;
+};
 
-const setInputHighlightOn = () => { textBackgroundSource.value = textBackgroundIcons.onFocus; };
+const setInputHighlightOn = () => {
+  props.setHoverToolTip(" ");
+  textBackgroundSource.value = textBackgroundIcons.onFocus;
+};
 const setInputHighlightOff = () => {
+  props.setHoverToolTip("");
   if (!isEditing.value) {
     textBackgroundSource.value = textBackgroundIcons.offFocus;
   }
@@ -54,7 +64,6 @@ const handleKeyPress = (event: KeyboardEvent) => {
     stopEditingSeedHandler();
     // @ts-expect-error ---
     event.target.blur();
-    console.log("THE type of the event is: ", event);
   }
 };
 
