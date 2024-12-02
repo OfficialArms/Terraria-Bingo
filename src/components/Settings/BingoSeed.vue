@@ -96,6 +96,7 @@ watch(currentRandomSeed, () => {
 .seed-container {
   display: flex;
   width: 100%;
+  align-items: center;
   font-size: 35px;
 }
 
