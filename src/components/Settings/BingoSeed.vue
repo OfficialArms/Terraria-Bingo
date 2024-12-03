@@ -123,7 +123,7 @@ watch(currentRandomSeed, () => {
 .seed-input {
   width: 100%;
   height: 100%;
-  /* background-color: red; */
+  color: white;
   background: rgba(0, 0, 0, 0);
   border: none;
   font-size: 35px;
