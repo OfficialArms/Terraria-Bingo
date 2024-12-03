@@ -25,6 +25,8 @@ const updateBoardSize = (newSize: number) => {
   console.log('Calling updateBoardSize, Value is: ', newSize);
   boardSize.value = newSize;
 };
+
+const sayMyName = (name: string) => { console.log(`My name is ${name}`); };
 </script>
 
 <!-- TODO: Make it so there is a tool tip at the bottom based on hovered element -->
@@ -40,9 +42,10 @@ const updateBoardSize = (newSize: number) => {
     </div>
     <hr>
     <div style="display: flex; flex-direction: row; justify-content: space-between;">
-      <ButtonOption :imageSource="SmallSizeIcon" optionName="Small" :isSelected="false" />
-      <ButtonOption :imageSource="MediumSizeIcon" optionName="Medium" :is-selected="false" />
-      <ButtonOption :imageSource="LargeSizeIcon" optionName="Large" :is-selected="true" />
+      <ButtonOption :imageSource="SmallSizeIcon" optionName="Small" :nameColor="'cyan'" :isSelected="false"
+        :onClick="() => sayMyName('Small')" />
+      <ButtonOption :imageSource="MediumSizeIcon" optionName="Medium" :is-selected="false" :nameColor="'springgreen'" />
+      <ButtonOption :imageSource="LargeSizeIcon" optionName="Large" :is-selected="true" :nameColor="'lime'" />
     </div>
     <hr>
     <p style="text-align: center;">

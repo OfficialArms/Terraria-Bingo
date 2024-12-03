@@ -4,16 +4,20 @@ const props = defineProps<{
   imageSource: string;
   optionName: string;
   isSelected: boolean;
+  nameColor: string;
+  onClick: () => void;
 }>();
 
 </script>
 
 <template>
-  <div class="button-container">
+  <div class="button-container" :onclick="onClick">
     <div class="selected-container" :class="{ 'selected-background': isSelected }">
       <img class="option-image" v-bind:src="props.imageSource" />
       <div class="text-container">
-        <p class="option-name">{{ optionName }}</p>
+        <p class="option-name" v-bind:style="{ color: `${nameColor}` }">
+          {{ optionName }}
+        </p>
       </div>
     </div>
   </div>
