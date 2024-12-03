@@ -1,19 +1,21 @@
 <script setup lang="ts">
 
-const props = defineProps<{
+interface Props {
   imageSource: string;
   optionName: string;
-  isSelected: boolean;
   nameColor: string;
   onClick: () => void;
-}>();
+  isSelected?: boolean;
+}
+
+const { isSelected = false } = defineProps<Props>()
 
 </script>
 
 <template>
   <div class="button-container" :onclick="onClick">
     <div class="selected-container" :class="{ 'selected-background': isSelected }">
-      <img class="option-image" v-bind:src="props.imageSource" />
+      <img class="option-image" v-bind:src="imageSource" />
       <div class="text-container">
         <p class="option-name" v-bind:style="{ color: `${nameColor}` }">
           {{ optionName }}
@@ -87,7 +89,6 @@ const props = defineProps<{
 .seed-input {
   width: 100%;
   height: 100%;
-  /* background-color: red; */
   background: rgba(0, 0, 0, 0);
   border: none;
   font-size: 35px;
