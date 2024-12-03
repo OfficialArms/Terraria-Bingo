@@ -39,10 +39,10 @@ const updateBoardSize = (newSize: number) => {
       <button @click="updateBoardSize(5)">large</button>
     </div>
     <hr>
-    <div style="display: flex; flex-direction: row; justify-content: space-evenly;">
+    <div style="display: flex; flex-direction: row; justify-content: space-between;">
       <ButtonOption :imageSource="SmallSizeIcon" optionName="Small" :isSelected="false" />
-      <ButtonOption :imageSource="MediumSizeIcon" optionName="Medium" :is-selected="true" />
-      <ButtonOption :imageSource="LargeSizeIcon" optionName="Large" :is-selected="false" />
+      <ButtonOption :imageSource="MediumSizeIcon" optionName="Medium" :is-selected="false" />
+      <ButtonOption :imageSource="LargeSizeIcon" optionName="Large" :is-selected="true" />
     </div>
     <hr>
     <p style="text-align: center;">

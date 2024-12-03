@@ -11,8 +11,10 @@ const props = defineProps<{
 <template>
   <div class="button-container">
     <div class="selected-container" :class="{ 'selected-background': isSelected }">
-      <img class="option-image" v-bind:src="imageSource" />
-      <p class="option-name">{{ optionName }}</p>
+      <img class="option-image" v-bind:src="props.imageSource" />
+      <div class="text-container">
+        <p class="option-name">{{ optionName }}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -23,12 +25,23 @@ const props = defineProps<{
   margin: 0;
 }
 
-.button-container {
-  padding: 20px;
+.text-container {
   display: flex;
-  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  margin-right: 5%;
+}
 
-  background-image: url("../../../images/ButtonBackground.png");
+.button-container {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  /* This is what makes the buttons pressed against each other */
+  width: 100%;
+  cursor: pointer;
+
+  background-image: url("../../../images/ButtonBackground2.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100% 100%;
@@ -39,6 +52,7 @@ const props = defineProps<{
   display: flex;
   flex-direction: row;
   align-items: center;
+  width: 100%;
 }
 
 .selected-background {
