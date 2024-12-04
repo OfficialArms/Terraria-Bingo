@@ -4,11 +4,14 @@ interface Props {
   imageSource: string;
   optionName: string;
   nameColor: string;
-  onClick: () => void;
+  onClick?: () => void;
   isSelected?: boolean;
 }
 
-const { isSelected = false } = defineProps<Props>()
+const {
+  isSelected = false,
+  onClick = () => console.log(`Button Option was clicked with no onClick`)
+} = defineProps<Props>()
 
 </script>
 
