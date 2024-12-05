@@ -4,14 +4,42 @@ import BingoSeed from './BingoSeed.vue';
 import { ref } from 'vue';
 import ButtonOption from './ButtonRow/ButtonOption.vue';
 
-// REMOVE THIS!!
+//TODO: REMOVE THIS!!
 import SmallSizeIcon from '../../images/SmallSizeIcon.png';
 import MediumSizeIcon from '../../images/MediumSizeIcon.png';
 import LargeSizeIcon from '../../images/LargeSizeIcon.png';
+import ButtonGroup from './ButtonRow/ButtonGroup.vue';
 
 const DEFAULT_TOOL_TIP = "Please choose how you want to play with the options above";
 
 const toolTipText = ref(DEFAULT_TOOL_TIP);
+
+const clickHandler = (index: number, size: string) => console.log(`I'm ${size} and index number ${index}`);
+
+//TODO: Move this to the config file
+//TODO: Once this works try updating imageSources to the actual thing being imported
+const SIZE_BUTTON_SETTINGS = ref({
+  buttonAttributes: [
+    {
+      imageSource: SmallSizeIcon,
+      nameColor: "cyan",
+      onClick: (index: number) => clickHandler(index, "small"),
+      optionName: "Small"
+    }, {
+      imageSource: MediumSizeIcon,
+      nameColor: "springgreen",
+      onClick: (index: number) => clickHandler(index, "medium"),
+      optionName: "Medium"
+    }, {
+      imageSource: LargeSizeIcon,
+      nameColor: "lime",
+      onClick: (index: number) => clickHandler(index, "large"),
+      optionName: "Large"
+    }],
+  startingSelectedIndex: 1
+});
+
+
 
 const updateToolTip = (toolTip: string) => {
   if (toolTip == "") {
@@ -42,10 +70,10 @@ const sayMyName = (name: string) => { console.log(`My name is ${name}`); };
     </div>
     <hr>
     <div style="display: flex; flex-direction: row; justify-content: space-between;">
-      <ButtonOption :imageSource="SmallSizeIcon" optionName="Small" :nameColor="'cyan'" :isSelected="false"
-        :onClick="() => sayMyName('Small')" />
-      <ButtonOption :imageSource="MediumSizeIcon" optionName="Medium" :is-selected="false" :nameColor="'springgreen'" />
-      <ButtonOption :imageSource="LargeSizeIcon" optionName="Large" :is-selected="true" :nameColor="'lime'" />
+      <ButtonGroup
+        :buttonAttributes="SIZE_BUTTON_SETTINGS.buttonAttributes"
+        :startingSelectedIndex="SIZE_BUTTON_SETTINGS.startingSelectedIndex"
+      />
     </div>
     <hr>
     <p style="text-align: center;">
