@@ -3,7 +3,7 @@
 interface Props {
   imageSource: string;
   isSelected?: boolean;
-  nameColor: string;
+  textColor: string;
   onClick?: () => void;
   optionName: string;
 }
@@ -20,7 +20,7 @@ const {
     <div class="selected-container" :class="{ 'selected-background': isSelected }">
       <img class="option-image" v-bind:src="imageSource" />
       <div class="text-container">
-        <p class="option-name" v-bind:style="{ color: `${nameColor}` }">
+        <p class="option-name" v-bind:style="{ color: `${textColor}` }">
           {{ optionName }}
         </p>
       </div>

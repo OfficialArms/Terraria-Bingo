@@ -5,10 +5,10 @@ import ButtonOption from './ButtonOption.vue';
 interface Props {
   buttonAttributes: {
     imageSource: string;
-    nameColor: string;
-    onClick: (index: number) => void;
+    textColor: string;
     optionName: string;
   }[];
+  onClickHandler: (index: number) => void;
   startingSelectedIndex?: number;
 };
 
@@ -26,12 +26,12 @@ const onClickManager = (newSelectedIndex: number, onClick: (index: number) => vo
 
 <template>
   <ButtonOption
-    v-for="({ imageSource, nameColor, onClick, optionName }, index) in buttonAttributes"
+    v-for="({ imageSource, textColor, optionName }, index) in buttonAttributes"
     :key="optionName"
     :imageSource
     :isSelected="index === selectedIndex"
-    :nameColor
-    :onClick="() => onClickManager(index, onClick)"
+    :textColor
+    :onClick="() => onClickManager(index, onClickHandler)"
     :optionName
   />
 </template>

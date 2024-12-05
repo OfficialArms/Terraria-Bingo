@@ -2,44 +2,18 @@
 import { boardSize } from '@/global-state';
 import BingoSeed from './BingoSeed.vue';
 import { ref } from 'vue';
-import ButtonOption from './ButtonRow/ButtonOption.vue';
-
-//TODO: REMOVE THIS!!
-import SmallSizeIcon from '../../images/SmallSizeIcon.png';
-import MediumSizeIcon from '../../images/MediumSizeIcon.png';
-import LargeSizeIcon from '../../images/LargeSizeIcon.png';
 import ButtonGroup from './ButtonRow/ButtonGroup.vue';
+import { SIZE_BUTTON_SETTINGS } from '@/util/config';
 
 const DEFAULT_TOOL_TIP = "Please choose how you want to play with the options above";
 
 const toolTipText = ref(DEFAULT_TOOL_TIP);
 
-const clickHandler = (index: number, size: string) => console.log(`I'm ${size} and index number ${index}`);
-
-//TODO: Move this to the config file
-//TODO: Once this works try updating imageSources to the actual thing being imported
-const SIZE_BUTTON_SETTINGS = ref({
-  buttonAttributes: [
-    {
-      imageSource: SmallSizeIcon,
-      nameColor: "cyan",
-      onClick: (index: number) => clickHandler(index, "small"),
-      optionName: "Small"
-    }, {
-      imageSource: MediumSizeIcon,
-      nameColor: "springgreen",
-      onClick: (index: number) => clickHandler(index, "medium"),
-      optionName: "Medium"
-    }, {
-      imageSource: LargeSizeIcon,
-      nameColor: "lime",
-      onClick: (index: number) => clickHandler(index, "large"),
-      optionName: "Large"
-    }],
-  startingSelectedIndex: 1
-});
-
-
+const boardSizeClickHandler = (index: number) => {
+  const newBoardSize = SIZE_BUTTON_SETTINGS.buttonAttributes[index].size;
+  console.log(`The button in index ${index} has been clicked. Updating board to size ${newBoardSize}`);
+  boardSize.value = newBoardSize;
+};
 
 const updateToolTip = (toolTip: string) => {
   if (toolTip == "") {
@@ -49,12 +23,6 @@ const updateToolTip = (toolTip: string) => {
   }
 };
 
-const updateBoardSize = (newSize: number) => {
-  console.log('Calling updateBoardSize, Value is: ', newSize);
-  boardSize.value = newSize;
-};
-
-const sayMyName = (name: string) => { console.log(`My name is ${name}`); };
 </script>
 
 <!-- TODO: Make it so there is a tool tip at the bottom based on hovered element -->
@@ -62,16 +30,17 @@ const sayMyName = (name: string) => { console.log(`My name is ${name}`); };
 <template>
   <div class="dialog-container">
     <BingoSeed :setHoverToolTip="updateToolTip" />
-    <hr>
+    <!-- <hr>
     <div class="size-container">
       <button @click="updateBoardSize(3)">small</button>
       <button @click="updateBoardSize(4)">medium</button>
       <button @click="updateBoardSize(5)">large</button>
-    </div>
+    </div> -->
     <hr>
     <div style="display: flex; flex-direction: row; justify-content: space-between;">
       <ButtonGroup
         :buttonAttributes="SIZE_BUTTON_SETTINGS.buttonAttributes"
+        :onClickHandler="boardSizeClickHandler"
         :startingSelectedIndex="SIZE_BUTTON_SETTINGS.startingSelectedIndex"
       />
     </div>
