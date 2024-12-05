@@ -30,12 +30,6 @@ const updateToolTip = (toolTip: string) => {
 <template>
   <div class="dialog-container">
     <BingoSeed :setHoverToolTip="updateToolTip" />
-    <!-- <hr>
-    <div class="size-container">
-      <button @click="updateBoardSize(3)">small</button>
-      <button @click="updateBoardSize(4)">medium</button>
-      <button @click="updateBoardSize(5)">large</button>
-    </div> -->
     <hr>
     <div style="display: flex; flex-direction: row; justify-content: space-between;">
       <ButtonGroup
