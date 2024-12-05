@@ -2,10 +2,10 @@
 
 interface Props {
   imageSource: string;
-  optionName: string;
+  isSelected?: boolean;
   nameColor: string;
   onClick?: () => void;
-  isSelected?: boolean;
+  optionName: string;
 }
 
 const {

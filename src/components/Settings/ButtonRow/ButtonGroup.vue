@@ -6,8 +6,8 @@ interface Props {
   buttonAttributes: {
     imageSource: string;
     nameColor: string;
+    onClick: (index: number) => void;
     optionName: string;
-    onClicks: (index: number) => void;
   }[];
   startingSelectedIndex?: number;
 };
@@ -16,19 +16,24 @@ const { startingSelectedIndex = 0 } = defineProps<Props>();
 
 const selectedIndex = ref(startingSelectedIndex);
 
-const onClickHandler = (newSelectedIndex: number, parentHandler: (index: number) => {}) => {
+const onClickManager = (newSelectedIndex: number, onClick: (index: number) => void) => {
   //TODO: Maybe remove parent handler as a parameter and
   selectedIndex.value = newSelectedIndex;
-  parentHandler(newSelectedIndex);
+  onClick(newSelectedIndex);
 }
-
 
 </script>
 
 <template>
-  <div v-for="(buttonAttribute, index) in buttonAttributes" v-bind:key="index">
-    <ButtonGroup v-bind="buttonAttribute" />
-  </div>
+  <ButtonOption
+    v-for="({ imageSource, nameColor, onClick, optionName }, index) in buttonAttributes"
+    :key="optionName"
+    :imageSource
+    :isSelected="index === selectedIndex"
+    :nameColor
+    :onClick="() => onClickManager(index, onClick)"
+    :optionName
+  />
 </template>
 
 <style></style>
