@@ -19,6 +19,13 @@ const selectedIndex = ref(startingSelectedIndex);
 const onClickManager = (newSelectedIndex: number, onClick: (index: number) => void) => {
   //TODO: Maybe remove parent handler as a parameter and
   selectedIndex.value = newSelectedIndex;
+  Props.onClickHandler()
+  onClick(newSelectedIndex);
+}
+
+const onHoverManager = (hoveredIndex: number, onHover: (index: number) => void) => {
+  //TODO: Maybe remove parent handler as a parameter and
+  selectedIndex.value = newSelectedIndex;
   onClick(newSelectedIndex);
 }
 

@@ -5,6 +5,7 @@ interface Props {
   isSelected?: boolean;
   textColor: string;
   onClick?: () => void;
+  onHover?: () => void;
   optionName: string;
 }
 
