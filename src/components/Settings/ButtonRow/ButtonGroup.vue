@@ -5,28 +5,37 @@ import ButtonOption from './ButtonOption.vue';
 interface Props {
   buttonAttributes: {
     imageSource: string;
-    textColor: string;
     optionName: string;
+    textColor: string;
+    tooltip?: string; // May want to remove
   }[];
   onClickHandler: (index: number) => void;
+  onHoverHandler: (index: number) => void;
   startingSelectedIndex?: number;
 };
 
-const { startingSelectedIndex = 0 } = defineProps<Props>();
+//TODO: NOTES FOR WHAT TO DO NEXT:
+// I need to decide where the tooltip is assigned
+// It can either be handled globally and these handle functions can modify the global state
+// *** Or I can have them fire a function which takes in an index and the Settings Component maps
+// it to the tooltip and modifies the tooltip's state with a ref instance property
+
+const { startingSelectedIndex = 0, onClickHandler, onHoverHandler } = defineProps<Props>();
 
 const selectedIndex = ref(startingSelectedIndex);
 
-const onClickManager = (newSelectedIndex: number, onClick: (index: number) => void) => {
-  //TODO: Maybe remove parent handler as a parameter and
+const onClickManager = (newSelectedIndex: number) => {
+  //NOTE: I modified the code to use the functions from the prop but this still needs to be tested
   selectedIndex.value = newSelectedIndex;
-  Props.onClickHandler()
-  onClick(newSelectedIndex);
+  onClickHandler(newSelectedIndex)
 }
 
-const onHoverManager = (hoveredIndex: number, onHover: (index: number) => void) => {
-  //TODO: Maybe remove parent handler as a parameter and
-  selectedIndex.value = newSelectedIndex;
-  onClick(newSelectedIndex);
+const onHoverManager = (hoveredIndex: number) => {
+  onHoverHandler(hoveredIndex);
+}
+
+const leaveHoverManager = () => {
+  onHoverHandler(-1);
 }
 
 </script>
@@ -38,8 +47,10 @@ const onHoverManager = (hoveredIndex: number, onHover: (index: number) => void) 
     :imageSource
     :isSelected="index === selectedIndex"
     :textColor
-    :onClick="() => onClickManager(index, onClickHandler)"
+    :onClick="() => onClickManager(index)"
     :optionName
+    @hover="onHoverManager(index)"
+    @mouseleave="leaveHoverManager()"
   />
 </template>
 

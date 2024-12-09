@@ -19,19 +19,19 @@ export const SIZE_BUTTON_SETTINGS = {
       textColor: "cyan",
       optionName: "Small",
       size: 3,
-      toolTip: "3x3 Grid - Ideal for shorter or single player games"
+      tooltip: "3x3 Grid - Ideal for shorter or single player games"
     }, {
       imageSource: MediumSizeIcon,
       textColor: "springgreen",
       optionName: "Medium",
       size: 4,
-      toolTip: "4x4 Grid - Your Adventure Begins... (The standard Experience)"
+      tooltip: "4x4 Grid - Your Adventure Begins... (The standard Experience)"
     }, {
       imageSource: LargeSizeIcon,
       textColor: "lime",
       optionName: "Large",
       size: 5,
-      toolTip: "5x5 Super-sized for long games"
+      tooltip: "5x5 Super-sized for long games"
     }],
   startingSelectedIndex: 1
 };
