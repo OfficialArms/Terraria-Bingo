@@ -14,7 +14,7 @@ const updateSeed = () => {
 
 <template>
   <div class="parent-grid">
-    <BingoHeader msg="Terraria Bingo" />
+    <BingoHeader class="header"/>
     <div style="display: flex; flex-direction: row">
       <p>Seed: {{ currentRandomSeed }}</p>
       <button @click="randomizeSeed">🎲</button>
@@ -29,6 +29,11 @@ const updateSeed = () => {
 </template>
 
 <style scoped>
+.header {
+  display: flex;
+  justify-content: center;
+}
+
 .parent-grid {
   height: 100%;
   display: flex;

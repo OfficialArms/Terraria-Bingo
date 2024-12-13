@@ -1,13 +1,34 @@
 <!DOCTYPE html>
-<html lang="" style="height: 100%;">
+<html lang="">
   <head>
     <meta charset="UTF-8">
     <link rel="icon" href="/Tree.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terraria Bingo</title>
+    <style>
+      html {
+        height: 100%;
+      }
+
+      body {
+        font-family: 'andy';
+        font-size: 24px;
+        margin: 0;
+        height: 100%; 
+      }
+
+      #app {
+        height: 100%;
+      }
+
+      @font-face {
+        font-family: "andy";
+        src: url(./src/fonts/ANDYB.TTF);
+      }
+    </style>
   </head>
-  <body style="margin: 0; height: 100%;">
-    <div id="app" style="height: 100%;"></div>
+  <body>
+    <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

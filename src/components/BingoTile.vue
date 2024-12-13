@@ -40,11 +40,10 @@ const tileClass = computed(() => stateToColourList[tileState.value]);
   margin: 6px;
   padding: 10px;
   word-wrap: break-word;
-  
   border: 2px solid #272052;
   border-radius: 8px;
 }
-  
+
 .tile-text {
   user-select: none;
   text-align: center;
