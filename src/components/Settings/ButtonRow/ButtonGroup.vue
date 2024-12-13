@@ -7,7 +7,7 @@ interface Props {
     imageSource: string;
     optionName: string;
     textColor: string;
-    tooltip: string; // May want to remove
+    tooltip: string;
   }[];
   onClickHandler: (index: number) => void;
   onHoverHandler: (tooltip?: string) => void;

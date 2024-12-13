@@ -139,7 +139,7 @@ watch(currentRandomSeed, () => {
   cursor: pointer;
 }
 
-/* Remove the arrows on input field - Specific per browser types */
+/* Removes the arrows on input field - Specific per browser types */
 
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
