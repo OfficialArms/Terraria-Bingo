@@ -7,7 +7,7 @@ import TextBackground from '../../images/TextBackground.png';
 import TextBackgroundHighlighted from '../../images/TextBackgroundHighlighted.png';
 
 const props = defineProps<{
-  setHoverToolTip: (toolTip: string) => void;
+  setHoverToolTip: (toolTip?: string) => void;
 }>();
 
 const seedIcons = {
@@ -30,16 +30,17 @@ const setSeedMouseHover = () => {
   seedSource.value = seedIcons.onHover;
 };
 const setSeedMouseLeave = () => {
-  props.setHoverToolTip("");
+  props.setHoverToolTip();
   seedSource.value = seedIcons.offHover;
 };
 
-const setInputHighlightOn = () => {
-  props.setHoverToolTip(" ");
+const setInputMouseHover = () => {
+  props.setHoverToolTip();
   textBackgroundSource.value = textBackgroundIcons.onFocus;
+  props.setHoverToolTip("Input the seed for your board");
 };
-const setInputHighlightOff = () => {
-  props.setHoverToolTip("");
+const setInputMouseLeave = () => {
+  props.setHoverToolTip();
   if (!isEditing.value) {
     textBackgroundSource.value = textBackgroundIcons.offFocus;
   }
@@ -55,7 +56,7 @@ const editSeedHandler = () => {
 
 const stopEditingSeedHandler = () => {
   isEditing.value = false;
-  setInputHighlightOff();
+  setInputMouseLeave();
   currentRandomSeed.value = newSeed.value;
 };
 
@@ -78,7 +79,7 @@ watch(currentRandomSeed, () => {
   <div class="seed-container">
     <img class='seed-icon' v-bind:src="seedSource" @mouseover="setSeedMouseHover" @mouseleave="setSeedMouseLeave"
       @click="copySeed" />
-    <div class="seed-input-container" @mouseover="setInputHighlightOn" @mouseleave="setInputHighlightOff"
+    <div class="seed-input-container" @mouseover="setInputMouseHover" @mouseleave="setInputMouseLeave"
       v-bind:style="{ 'background-image': 'url(' + textBackgroundSource + ')' }">
       <label class="seed-label" for="seed-input">Seed: </label>
       <input id="seed-input" class="seed-input" @focus="editSeedHandler" @blur="stopEditingSeedHandler"

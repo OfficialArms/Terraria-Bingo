@@ -15,8 +15,8 @@ const boardSizeClickHandler = (index: number) => {
   boardSizeSelected.value = index;
 };
 
-const updateToolTip = (toolTip: string) => {
-  if (toolTip == "") {
+const updateToolTip = (toolTip?: string) => {
+  if (typeof toolTip === 'undefined') {
     toolTipText.value = DEFAULT_TOOL_TIP;
   } else {
     toolTipText.value = toolTip;
@@ -35,12 +35,13 @@ const updateToolTip = (toolTip: string) => {
       <ButtonGroup
         :buttonAttributes="SIZE_BUTTON_SETTINGS.buttonAttributes"
         :onClickHandler="boardSizeClickHandler"
+        :onHoverHandler="updateToolTip"
         :startingSelectedIndex="boardSizeSelected"
       />
     </div>
     <hr>
     <p style="text-align: center;">
-      Put Tooltip Here
+      {{toolTipText}}
     </p>
   </div>
 </template>
