@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { boardSize } from '@/global-state';
+import { boardSize, boardSizeSelected } from '@/global-state';
 import BingoSeed from './BingoSeed.vue';
 import { ref } from 'vue';
 import ButtonGroup from './ButtonRow/ButtonGroup.vue';
@@ -12,6 +12,7 @@ const toolTipText = ref(DEFAULT_TOOL_TIP);
 const boardSizeClickHandler = (index: number) => {
   const newBoardSize = SIZE_BUTTON_SETTINGS.buttonAttributes[index].size;
   boardSize.value = newBoardSize;
+  boardSizeSelected.value = index;
 };
 
 const updateToolTip = (toolTip: string) => {
@@ -34,7 +35,7 @@ const updateToolTip = (toolTip: string) => {
       <ButtonGroup
         :buttonAttributes="SIZE_BUTTON_SETTINGS.buttonAttributes"
         :onClickHandler="boardSizeClickHandler"
-        :startingSelectedIndex="SIZE_BUTTON_SETTINGS.startingSelectedIndex"
+        :startingSelectedIndex="boardSizeSelected"
       />
     </div>
     <hr>
