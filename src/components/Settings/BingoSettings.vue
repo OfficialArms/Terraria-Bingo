@@ -11,7 +11,6 @@ const toolTipText = ref(DEFAULT_TOOL_TIP);
 
 const boardSizeClickHandler = (index: number) => {
   const newBoardSize = SIZE_BUTTON_SETTINGS.buttonAttributes[index].size;
-  console.log(`The button in index ${index} has been clicked. Updating board to size ${newBoardSize}`);
   boardSize.value = newBoardSize;
 };
 
