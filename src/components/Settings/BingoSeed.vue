@@ -5,6 +5,7 @@ import SeedIcon from '../../images/SeedIcon.png';
 import SeedIconHighlighted from '../../images/SeedIconHighlighted.png';
 import TextBackground from '../../images/TextBackground.png';
 import TextBackgroundHighlighted from '../../images/TextBackgroundHighlighted.png';
+import { SEED_BUTTON_TOOLTIP, SEED_INPUT_TOOLTIP } from '@/util/config';
 
 const props = defineProps<{
   setHoverToolTip: (toolTip?: string) => void;
@@ -26,7 +27,7 @@ const newSeed = ref(currentRandomSeed.value);
 const isEditing = ref(false);
 
 const setSeedMouseHover = () => {
-  props.setHoverToolTip("Copy your seed to clipboard");
+  props.setHoverToolTip(SEED_BUTTON_TOOLTIP);
   seedSource.value = seedIcons.onHover;
 };
 const setSeedMouseLeave = () => {
@@ -35,9 +36,8 @@ const setSeedMouseLeave = () => {
 };
 
 const setInputMouseHover = () => {
-  props.setHoverToolTip();
+  props.setHoverToolTip(SEED_INPUT_TOOLTIP);
   textBackgroundSource.value = textBackgroundIcons.onFocus;
-  props.setHoverToolTip("Input the seed for your board");
 };
 const setInputMouseLeave = () => {
   props.setHoverToolTip();
