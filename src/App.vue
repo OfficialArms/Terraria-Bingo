@@ -25,7 +25,7 @@ watch(boardSize, () => {
 
 <template>
   <div class="bingo-page">
-    <BingoHeader msg="Terraria Bingo" />
+    <BingoHeader class="header" />
     <div class="bingo-content">
       <div style="display: flex; flex-direction: row; justify-content: space-between">
         <div style="display: flex; flex-direction: row">
@@ -62,6 +62,11 @@ watch(boardSize, () => {
   background-image: url('/src/images/background.png');
   background-size: cover;
   color: white;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
 }
 
 .seed-text {
