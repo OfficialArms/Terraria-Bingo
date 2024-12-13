@@ -29,10 +29,10 @@ watch(boardSize, () => {
     <div class="bingo-content">
       <div style="display: flex; flex-direction: row; justify-content: space-between">
         <div style="display: flex; flex-direction: row">
-          <p>Seed: {{ currentRandomSeed }}</p>
+          <p class="seed-text">Seed: {{ currentRandomSeed }}</p>
           <img class="random-button" src="./images/RandomDieIcon.png" @click="randomizeSeed" />
         </div>
-        <SettingsButton :onclick="toggleSettings" />
+        <SettingsButton class="settings-button" :onclick="toggleSettings" />
       </div>
       <BingoSettings v-if="isDialogOpen" />
       <BingoBoard class="bingo-board-area" :size="boardSize" :bingo-tiles="bingoTiles" />
@@ -62,6 +62,14 @@ watch(boardSize, () => {
   background-image: url('/src/images/background.png');
   background-size: cover;
   color: white;
+}
+
+.seed-text {
+  margin-left: 6px;
+}
+
+.settings-button {
+  margin-right: 6px;
 }
 
 .random-button {
