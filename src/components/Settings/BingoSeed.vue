@@ -82,7 +82,7 @@ watch(currentRandomSeed, () => {
     <div class="seed-input-container" @mouseover="setInputMouseHover" @mouseleave="setInputMouseLeave"
       v-bind:style="{ 'background-image': 'url(' + textBackgroundSource + ')' }">
       <label class="seed-label" for="seed-input">Seed: </label>
-      <input id="seed-input" type="number" class="seed-input" @focus="editSeedHandler" @blur="stopEditingSeedHandler"
+      <input id="seed-input" class="seed-input" @focus="editSeedHandler" @blur="stopEditingSeedHandler"
         @keyup="handleKeyPress" v-model="newSeed" />
     </div>
   </div>
@@ -137,16 +137,5 @@ watch(currentRandomSeed, () => {
 
 .seed-input:not(:focus) {
   cursor: pointer;
-}
-
-/* Removes the arrows on input field - Specific per browser types */
-
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-input[type='number'] {
-  -moz-appearance: textfield;
 }
 </style>
