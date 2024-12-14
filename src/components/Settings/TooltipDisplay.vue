@@ -20,7 +20,7 @@ const props = defineProps<{
   background-size: 100% 100%;
   image-rendering: pixelated;
   margin: 0;
-  padding: 30px 0;
+  padding: 30px 10px;
   height: 100%;
 }
 </style>
