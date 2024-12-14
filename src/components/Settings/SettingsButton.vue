@@ -28,6 +28,5 @@ const setSettingMouseLeave = () => { settingsSource.value = settingsIcons.offHov
 .settings-button {
   cursor: pointer;
   display: block;
-
 }
 </style>

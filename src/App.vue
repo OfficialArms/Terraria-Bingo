@@ -35,7 +35,7 @@ watch(boardSize, () => {
         <SettingsButton class="settings-button" :onclick="toggleSettings" />
       </div>
       <BingoSettings v-if="isDialogOpen" />
-      <BingoBoard :size="boardSize" :bingo-tiles="bingoTiles" />
+      <BingoBoard class="bingo-board" :size="boardSize" :bingo-tiles="bingoTiles" />
     </div>
   </div>
 </template>
@@ -48,6 +48,10 @@ watch(boardSize, () => {
   overflow: auto;
   display: flex;
   flex-direction: column;
+}
+
+.bingo-board {
+  height: 95%;
 }
 
 .bingo-settings-button {
@@ -82,6 +86,7 @@ watch(boardSize, () => {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  height: 5%
 }
 
 .settings-button {

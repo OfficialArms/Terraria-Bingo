@@ -6,7 +6,7 @@
 
 <style scoped>
 .title {
-  margin: 16px;
+  margin-top: 16px;
   min-width: 100px;
 }
 </style>
