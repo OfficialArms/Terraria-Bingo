@@ -13,7 +13,7 @@ import MediumSizeIcon from '../images/MediumSizeIcon.png';
 import LargeSizeIcon from '../images/LargeSizeIcon.png';
 
 export const SEED_BUTTON_TOOLTIP = "Copy your board's seed";
-export const SEED_INPUT_TOOLTIP = "The DNA marker that define's your board's tiles";
+export const SEED_INPUT_TOOLTIP = "The DNA marker that defines your board's tiles";
 
 export const SIZE_BUTTON_SETTINGS = {
   buttonAttributes: [
