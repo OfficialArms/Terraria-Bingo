@@ -27,15 +27,15 @@ watch(boardSize, () => {
   <div class="bingo-page">
     <BingoHeader class="header" />
     <div class="bingo-content">
-      <div style="display: flex; flex-direction: row; justify-content: space-between">
-        <div style="display: flex; flex-direction: row">
+      <div class="settings-area">
+        <div class="seed-container">
           <p class="seed-text">Seed: {{ currentRandomSeed }}</p>
           <img class="random-button" src="./images/RandomDieIcon.png" @click="randomizeSeed" />
         </div>
         <SettingsButton class="settings-button" :onclick="toggleSettings" />
       </div>
       <BingoSettings v-if="isDialogOpen" />
-      <BingoBoard class="bingo-board-area" :size="boardSize" :bingo-tiles="bingoTiles" />
+      <BingoBoard :size="boardSize" :bingo-tiles="bingoTiles" />
     </div>
   </div>
 </template>
@@ -69,8 +69,19 @@ watch(boardSize, () => {
   justify-content: center;
 }
 
+.seed-container {
+  display: flex;
+  flex-direction: row;
+}
+
 .seed-text {
-  margin-left: 6px;
+  margin: 0 0 0 6px;
+}
+
+.settings-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .settings-button {
@@ -80,7 +91,7 @@ watch(boardSize, () => {
 .random-button {
   image-rendering: pixelated;
   display: block;
-  margin: auto;
+  margin: 0;
   cursor: pointer;
 }
 </style>
