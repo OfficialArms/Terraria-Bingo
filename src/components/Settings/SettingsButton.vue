@@ -12,8 +12,6 @@ const settingsSource = ref(settingsIcons.offHover);
 
 const setSettingMouseHover = () => { settingsSource.value = settingsIcons.onHover; };
 const setSettingMouseLeave = () => { settingsSource.value = settingsIcons.offHover; }
-
-
 </script>
 
 <template>

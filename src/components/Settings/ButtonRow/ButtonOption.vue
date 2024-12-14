@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 interface Props {
   imageSource: string;
   isSelected?: boolean;
@@ -13,7 +12,6 @@ const {
   isSelected = false,
   onClick = () => console.log(`Button Option was clicked with no onClick`)
 } = defineProps<Props>()
-
 </script>
 
 <template>
@@ -47,7 +45,6 @@ const {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-  /* This is what makes the buttons pressed against each other */
   width: 100%;
   cursor: pointer;
 

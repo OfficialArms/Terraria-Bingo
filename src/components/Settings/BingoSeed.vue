@@ -39,6 +39,7 @@ const setInputMouseHover = () => {
   props.setHoverToolTip(SEED_INPUT_TOOLTIP);
   textBackgroundSource.value = textBackgroundIcons.onFocus;
 };
+
 const setInputMouseLeave = () => {
   props.setHoverToolTip();
   if (!isEditing.value) {

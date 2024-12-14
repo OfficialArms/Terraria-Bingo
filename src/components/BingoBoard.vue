@@ -14,7 +14,11 @@ watch(currentRandomSeed, () => randomizeBoardWithSeed(currentRandomSeed.value));
 
 <template>
   <div class="bingo-board">
-    <BingoTile v-for="(tile, index) in props.bingoTiles" :key="index" :msg="tile.task" :difficulty="tile.difficulty" />
+    <BingoTile
+      v-for="(tile, index) in props.bingoTiles"
+      :key="index" :msg="tile.task"
+      :difficulty="tile.difficulty"
+    />
   </div>
 </template>
 

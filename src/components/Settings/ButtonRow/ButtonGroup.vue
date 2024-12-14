@@ -46,5 +46,3 @@ const leaveHoverManager = () => {
     @mouseleave="leaveHoverManager()"
   />
 </template>
-
-<style></style>

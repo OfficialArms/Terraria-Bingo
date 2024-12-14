@@ -6,7 +6,6 @@ import ButtonGroup from './ButtonRow/ButtonGroup.vue';
 import { SIZE_BUTTON_SETTINGS } from '@/util/config';
 import TooltipDisplay from './TooltipDisplay.vue';
 
-
 const DEFAULT_TOOL_TIP = "Please choose how you want to play with the options above";
 
 const toolTipText = ref(DEFAULT_TOOL_TIP);

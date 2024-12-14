@@ -14,11 +14,10 @@ const toggleSettings = () => {
   isDialogOpen.value = !isDialogOpen.value;
 };
 
-// Update how many tiles are sent when the board size changes
+// Update how many tiles are used when the board size changes
 watch(boardSize, () => {
   bingoTiles.value = ALL_BINGO_TILES.slice(0, boardSize.value * boardSize.value);
 });
-
 </script>
 
 <!-- // TODO: make is so that you can close the menu by clicking outside the modal -->
