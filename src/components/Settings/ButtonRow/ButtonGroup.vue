@@ -36,6 +36,7 @@ const leaveHoverManager = () => {
 <template>
   <ButtonOption
     v-for="({ imageSource, textColor, optionName }, index) in buttonAttributes"
+    :class="index === 0 ? '' : 'button-with-margin'"
     :key="optionName"
     :imageSource
     :isSelected="index === selectedIndex"
@@ -46,3 +47,9 @@ const leaveHoverManager = () => {
     @mouseleave="leaveHoverManager()"
   />
 </template>
+
+<style>
+.button-with-margin {
+  margin-left: 12px;
+}
+</style>
