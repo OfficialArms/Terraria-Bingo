@@ -6,7 +6,7 @@ import { randomizeBoardWithSeed } from '@/util/randomization';
 
 const props = defineProps<{
   size: number;
-  bingoTiles: { task: string; difficulty: number; }[];
+  bingoTiles: { task: string; difficulty: number }[];
 }>();
 
 watch(currentRandomSeed, () => randomizeBoardWithSeed(currentRandomSeed.value));
@@ -16,7 +16,8 @@ watch(currentRandomSeed, () => randomizeBoardWithSeed(currentRandomSeed.value));
   <div class="bingo-board">
     <BingoTile
       v-for="(tile, index) in props.bingoTiles"
-      :key="index" :msg="tile.task"
+      :key="index"
+      :msg="tile.task"
       :difficulty="tile.difficulty"
     />
   </div>
@@ -28,5 +29,8 @@ watch(currentRandomSeed, () => randomizeBoardWithSeed(currentRandomSeed.value));
   display: grid;
   grid-template-columns: repeat(v-bind(size), 1fr);
   grid-template-rows: repeat(v-bind(size), 1fr);
+  margin: 50px;
+  margin-top: 0;
+  overflow: auto;
 }
 </style>
