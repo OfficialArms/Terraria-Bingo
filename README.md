@@ -1,6 +1,6 @@
 # Terraria Bingo 🌳
 
-[Play Terraria Bingo now!](https://officialarms.github.io/terraria-bingo/)
+[Play Terraria Bingo now!](https://officialarms.github.io/Terraria-Bingo/)
 
 
 ## Recommended IDE Setup
