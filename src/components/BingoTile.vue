@@ -3,15 +3,15 @@ import { computed, ref } from 'vue';
 
 defineProps<{
   msg: string,
-  difficulty: number;
-}>();
+  difficulty: number
+}>()
 
-const stateToColourList = ["blank-tile", "collected-tile", "taken-tile"];
+const stateToColourList = ["blank-tile","collected-tile","taken-tile"]
 const tileState = ref(0);
 
 const updateState = () => {
-  tileState.value = (tileState.value + 1) % stateToColourList.length;
-};
+  tileState.value = (tileState.value+1) % stateToColourList.length;
+}
 
 // Function to reset the `tileState` to "blank-tile" on right-click
 const resetState = (event: Event) => {
@@ -30,6 +30,7 @@ const tileClass = computed(() => stateToColourList[tileState.value]);
 </template>
 
 <style scoped>
+
 .tile {
   display: flex;
   justify-content: center;
@@ -39,7 +40,6 @@ const tileClass = computed(() => stateToColourList[tileState.value]);
   margin: 6px;
   padding: 10px;
   word-wrap: break-word;
-
   border: 2px solid #272052;
   border-radius: 8px;
 }
@@ -65,4 +65,5 @@ const tileClass = computed(() => stateToColourList[tileState.value]);
   border-color: #5d1d1c;
   background-color: #9b3432bc;
 }
+
 </style>
