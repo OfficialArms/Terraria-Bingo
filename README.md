@@ -2,6 +2,8 @@
 
 [Play Terraria Bingo now!](https://officialarms.github.io/Terraria-Bingo/)
 
+![image](https://github.com/user-attachments/assets/234faa86-0028-4e68-9e1a-555681dd2d81)
+
 
 ## Recommended IDE Setup
 
